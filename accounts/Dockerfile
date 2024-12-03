@@ -5,6 +5,8 @@ FROM openjdk:17-jdk-slim
 #Information around who maintains the image
 LABEL "org.opencontainers.image.authors"="guptajay.com"
 
+RUN (apt-get update && apt-get install -y curl) || (apk add --no-cache curl)
+
 # Add the application's jar to the image
 COPY target/accounts-0.0.1-SNAPSHOT.jar accounts-0.0.1-SNAPSHOT.jar
 
