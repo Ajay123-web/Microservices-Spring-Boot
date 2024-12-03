@@ -1,4 +1,15 @@
 services:
+  configserver:
+    image: "ajaygupta1410/configserver:v1"
+    container_name: configserver-ms
+    ports:
+      - "8071:8071"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - microservices
   accounts:
     image: "ajaygupta1410/accounts:v1"
     container_name: accounts-ms
