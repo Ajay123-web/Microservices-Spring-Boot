@@ -13,3 +13,5 @@ public class Application {
 	}
 
 }
+
+// Trigger /actuator/refresh endpoint to refresh props for individual microservices

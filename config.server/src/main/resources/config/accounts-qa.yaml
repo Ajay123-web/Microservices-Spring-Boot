@@ -4,7 +4,7 @@ build:
 accounts:
   message: "Welcome to EazyBank accounts related QA APIs "
   contactDetails:
-    name: "Smitha Ray - QA Lead"
+    name: "Ajay Kumar Gupta - QA Lead"
     email: "smitha@eazybank.com"
   onCallSupport:
     - (666) 265-3765

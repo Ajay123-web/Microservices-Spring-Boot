@@ -17,3 +17,5 @@ public class AccountsContactInfoDto {
     private List<String> onCallSupport;
 
 }
+
+// If it was a record then we cannot modify the vars after the object is initialised
