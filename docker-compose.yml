@@ -1,4 +1,5 @@
 services:
+# Message broker config for spring-cloud-bus
 #  rabbit:
 #    image: rabbitmq:3.13-management
 #    hostname: rabbitmq
@@ -14,54 +15,55 @@ services:
 #    networks:
 #      - microservices
 
-  accountsdb:
-    image: "mysql"
-    container_name: accountsdb
-    ports:
-      - "3306:3306"
-    environment:
-      MYSQL_DATABASE: accountsdb
-      MYSQL_ROOT_PASSWORD: root
-    healthcheck:
-      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
-      timeout: 10s
-      retries: 10
-      interval: 10s
-      start_period: 10s
-    networks:
-      - microservices
-  cardsdb:
-    image: "mysql"
-    container_name: cardsdb
-    ports:
-      - "3307:3306"
-    environment:
-      MYSQL_DATABASE: cardsdb
-      MYSQL_ROOT_PASSWORD: root
-    healthcheck:
-      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
-      timeout: 10s
-      retries: 10
-      interval: 10s
-      start_period: 10s
-    networks:
-      - microservices
-  loansdb:
-    image: "mysql"
-    container_name: loansdb
-    ports:
-      - "3308:3306"
-    environment:
-      MYSQL_DATABASE: loansdb
-      MYSQL_ROOT_PASSWORD: root
-    healthcheck:
-      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
-      timeout: 10s
-      retries: 10
-      interval: 10s
-      start_period: 10s
-    networks:
-      - microservices
+# MySql Configs
+#  accountsdb:
+#    image: "mysql"
+#    container_name: accountsdb
+#    ports:
+#      - "3306:3306"
+#    environment:
+#      MYSQL_DATABASE: accountsdb
+#      MYSQL_ROOT_PASSWORD: root
+#    healthcheck:
+#      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+#      timeout: 10s
+#      retries: 10
+#      interval: 10s
+#      start_period: 10s
+#    networks:
+#      - microservices
+#  cardsdb:
+#    image: "mysql"
+#    container_name: cardsdb
+#    ports:
+#      - "3307:3306"
+#    environment:
+#      MYSQL_DATABASE: cardsdb
+#      MYSQL_ROOT_PASSWORD: root
+#    healthcheck:
+#      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+#      timeout: 10s
+#      retries: 10
+#      interval: 10s
+#      start_period: 10s
+#    networks:
+#      - microservices
+#  loansdb:
+#    image: "mysql"
+#    container_name: loansdb
+#    ports:
+#      - "3308:3306"
+#    environment:
+#      MYSQL_DATABASE: loansdb
+#      MYSQL_ROOT_PASSWORD: root
+#    healthcheck:
+#      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+#      timeout: 10s
+#      retries: 10
+#      interval: 10s
+#      start_period: 10s
+#    networks:
+#      - microservices
   configserver:
     image: "ajaygupta1410/configserver:v1"
     container_name: configserver-ms
@@ -90,8 +92,8 @@ services:
     ports:
       - "8080:8080"
     depends_on:
-      accountsdb:
-        condition: service_healthy
+#      accountsdb:
+#        condition: service_healthy
       configserver:
         condition: service_healthy
     environment:
@@ -114,8 +116,8 @@ services:
     ports:
       - "8090:8090"
     depends_on:
-      loansdb:
-        condition: service_healthy
+#      loansdb:
+#        condition: service_healthy
       configserver:
         condition: service_healthy
     environment:
@@ -138,8 +140,8 @@ services:
     ports:
       - "9000:9000"
     depends_on:
-      cardsdb:
-        condition: service_healthy
+#      cardsdb:
+#        condition: service_healthy
       configserver:
         condition: service_healthy
     environment:
